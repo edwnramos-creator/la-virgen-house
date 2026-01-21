@@ -12,8 +12,8 @@
             --ocean-deep: #1e3a5f;
             --ocean-teal: #4a90b8;
             --sand-light: #fdfaf5;
-            --glass: rgba(255, 255, 255, 0.2);
             --white: #ffffff;
+            --wa-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,11 +25,11 @@
             line-height: 1.8;
         }
 
-        /* --- SCROLL ANIMATIONS --- */
+        /* --- SCROLL REVEAL --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -48,131 +48,142 @@
         
         .hero-bg {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 120%; /* Taller for parallax */
+            top: 0; left: 0; width: 100%; height: 110%;
             background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/03-exterior-porch.jpeg') center/cover no-repeat;
             z-index: -1;
-            will-change: transform;
         }
 
         .hero-transparent-card {
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            padding: 4rem 2rem;
-            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 3rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            max-width: 700px;
+            max-width: 650px;
             color: white;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
             z-index: 2;
         }
 
         .hero-badge {
             display: inline-block;
             border: 1px solid white;
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
-            animation: float 3s ease-in-out infinite;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 0.5rem; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 4rem); margin-bottom: 0.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 
-        /* --- STATS GRID --- */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
         .hero-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 20px;
+            padding: 1.2rem;
+            border-radius: 15px;
         }
         .price-highlight { background: white; color: var(--ocean-deep); grid-column: span 2; }
 
         /* --- SECTIONS --- */
-        section { padding: 10rem 2rem; max-width: 1000px; margin: 0 auto; position: relative; }
+        section { padding: 8rem 2rem; max-width: 900px; margin: 0 auto; position: relative; }
         
         .beach-gradient {
             background: linear-gradient(180deg, var(--sand-light) 0%, #e0f2f1 100%);
-            border-radius: 60px;
+            border-radius: 40px;
             margin: 2rem;
         }
 
-        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--ocean-deep); margin-bottom: 2rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--ocean-deep); margin-bottom: 1.5rem; }
 
-        /* --- DRAWING ELEMENTS --- */
-        .drawing {
+        /* --- MINIMAL SURF GRAPHICS --- */
+        .surf-icon {
             position: absolute;
             z-index: -1;
-            opacity: 0.15;
-            animation: drift 10s linear infinite;
+            opacity: 0.1;
+            color: var(--ocean-teal);
         }
 
         /* --- QUICK FACTS --- */
         .fact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
         .fact-item {
             background: white;
-            padding: 2.5rem;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
-            border-bottom: 4px solid var(--ocean-teal);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border-left: 3px solid var(--ocean-teal);
         }
+        .fact-item h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--ocean-teal); margin-bottom: 0.5rem; }
 
         /* --- GALLERY --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
         }
         .gallery img {
-            width: 100%; height: 400px; object-fit: cover; border-radius: 30px;
-            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+            width: 100%; height: 300px; object-fit: cover; border-radius: 15px;
+            transition: transform 0.4s ease;
         }
-        .gallery img:hover { transform: scale(1.05) rotate(1deg); }
+        .gallery img:hover { transform: translateY(-5px); }
 
-        /* --- CONTACT - BRIGHT & VISIBLE --- */
-        .contact-section {
-            background: var(--ocean-deep);
-            color: white;
+        /* --- UPDATED DISCRETE CONTACT SECTION --- */
+        .footer-contact {
             text-align: center;
-            padding: 8rem 2rem;
-            border-radius: 50px 50px 0 0;
-            margin-top: 5rem;
+            padding: 4rem 2rem 6rem;
+            background: var(--sand-light);
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
-        .whatsapp-btn {
+
+        .footer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ocean-deep);
+            margin-bottom: 1.5rem;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .wa-discrete-btn {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            background: #25D366;
+            gap: 0.8rem;
+            background: var(--wa-green);
             color: white;
-            padding: 1.5rem 4rem;
-            border-radius: 100px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.3rem;
-            margin-top: 3rem;
-            transition: all 0.3s;
-            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
         }
-        .whatsapp-btn:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(37, 211, 102, 0.5); }
+        .wa-discrete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
 
-        /* --- KEYFRAMES --- */
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes drift { from { transform: rotate(0deg) translateX(20px) rotate(0deg); } to { transform: rotate(360deg) translateX(20px) rotate(-360deg); } }
+        /* --- ANIMATIONS --- */
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(15px) translateY(-5px); }
+        }
 
         @media (max-width: 600px) {
-            section { padding: 5rem 1rem; }
+            section { padding: 4rem 1.2rem; }
             .beach-gradient { margin: 1rem 0; border-radius: 0; }
-            .hero-transparent-card { padding: 2rem 1rem; }
         }
     </style>
 </head>
@@ -182,20 +193,23 @@
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-transparent-card">
             <div class="hero-badge">Move-In Ready</div>
-            <h1>La Virgen de Pavones</h1>
-            <p style="font-size: 1.4rem; opacity: 0.9;">Turnkey house, 13 min to Pilón</p>
+            <h1 class="location">La Virgen de Pavones</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Turnkey house, 13 min to Pilón</p>
 
             <div class="hero-stats">
-                <div class="hero-card"><h3>2 Bed</h3><p style="font-size: 0.7rem; text-transform: uppercase;">1 Bath</p></div>
-                <div class="hero-card"><h3>1,000 m²</h3><p style="font-size: 0.7rem; text-transform: uppercase;">~10,764 sq ft</p></div>
-                <div class="hero-card"><h3>13 Min</h3><p style="font-size: 0.7rem; text-transform: uppercase;">Drive to Surf</p></div>
-                <div class="hero-card price-highlight"><h3>$100,000</h3><p style="font-size: 0.7rem; text-transform: uppercase;">Negotiable</p></div>
+                <div class="hero-card"><h3>2 Bed</h3><p style="font-size: 0.6rem; text-transform: uppercase;">1 Bath</p></div>
+                <div class="hero-card"><h3>1,000 m²</h3><p style="font-size: 0.6rem; text-transform: uppercase;">~10,764 sq ft</p></div>
+                <div class="hero-card"><h3>13 Min</h3><p style="font-size: 0.6rem; text-transform: uppercase;">Drive to Surf</p></div>
+                <div class="hero-card price-highlight"><h3>$100,000</h3><p style="font-size: 0.6rem; text-transform: uppercase;">Negotiable</p></div>
             </div>
         </div>
     </div>
 
     <section class="reveal">
-        <svg class="drawing" style="top: 10%; right: 10%; width: 100px;" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5"/></svg>
+        <svg class="surf-icon" style="top: 0; right: -20px; width: 120px; animation: waveMove 6s infinite ease-in-out;" viewBox="0 0 200 100">
+            <path d="M0,50 Q50,20 100,50 T200,50" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        
         <h2>Why I Like This One</h2>
         <p>Unlike the lots I usually find, this one comes with a house already built. 2 bed, 1 bath, wrap-around porch, vaulted ceilings. All services installed. Just needs furnishing.</p>
         <p>Honestly, I'd still prefer to build custom — that's just me. But if you don't want to deal with construction and just want something ready to go, this is worth a look. Price is negotiable too.</p>
@@ -216,6 +230,10 @@
     </div>
 
     <section class="reveal">
+        <svg class="surf-icon" style="bottom: 0; left: -30px; width: 80px; opacity: 0.05;" viewBox="0 0 50 150">
+            <ellipse cx="25" cy="75" rx="15" ry="70" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        
         <h2>Photos</h2>
         <div class="gallery">
             <img src="images/02-exterior-front.jpeg">
@@ -227,34 +245,36 @@
         </div>
     </section>
 
-    <section class="reveal">
+    <section class="reveal" style="padding-bottom: 4rem;">
         <h2>Things to Consider</h2>
         <p><strong>Not walking distance to surf</strong> — you'll need a car or moto to get to Pilón. It's a 13-minute drive.</p>
         <p><strong>Price is negotiable</strong> — asking $100K but there may be room to talk. Worth discussing directly with the seller.</p>
     </section>
 
-    <div class="contact-section reveal">
-        <h2 style="color: white; font-size: 3.5rem;">Contact Seller</h2>
-        <p style="opacity: 0.8;">Ready to see it in person? Click below to chat.</p>
-        <a href="https://wa.me/50684904218" class="whatsapp-btn">
+    <footer class="footer-contact reveal">
+        <span class="footer-label">Seller Contact</span>
+        <a href="https://wa.me/50684904218" class="wa-discrete-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
             Connect via WhatsApp
         </a>
-    </div>
+    </footer>
 
     <script>
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
+        // Reveal elements on scroll
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Parallax Effect
+        // Subtle Parallax
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
-            document.getElementById('heroBg').style.transform = `translateY(${scroll * 0.4}px)`;
+            document.getElementById('heroBg').style.transform = `translateY(${scroll * 0.2}px)`;
         });
     </script>
 </body>
