@@ -3,143 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio-Analysis & Coaching | Premium Performance</title>
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
-
+    <title>La Virgen de Pavones — Premium Surf House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ocean-deep: #004e92;
-            --sunset-glow: #00b4db;
-            --glass-white: rgba(255, 255, 255, 0.1);
-            --text-light: #f8f9fa;
+            /* Beachy Vibes Palette */
+            --ocean-deep: #1a3c5e;
+            --ocean-teal: #4fb3ad;
+            --sand-light: #fdfaf5;
+            --glass-white: rgba(255, 255, 255, 0.85);
+            --sunset-gold: #e6b17e;
+            --text-dark: #2c3e50;
         }
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #021B79 0%, #0575E6 50%, #00F2FE 100%);
-            background-attachment: fixed;
-            color: var(--text-light);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--sand-light); 
+            color: var(--text-dark); 
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Smooth Scrolling */
-        html { scroll-behavior: smooth; }
+        /* --- SMOOTH SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* Hero Section */
-        header {
+        /* --- HERO SECTION --- */
+        .hero {
             height: 100vh;
+            background: url('images/03-exterior-porch.jpeg') center/cover no-repeat;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
+            justify-content: center;
+            position: relative;
         }
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, #a1c4fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Subtle gradient at the bottom to transition into white */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 30vh;
+            background: linear-gradient(to bottom, transparent, var(--sand-light));
         }
 
-        p.subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            max-width: 600px;
-        }
-
-        /* Glassmorphism Cards */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 20px;
-        }
-
-        .card {
+        .hero-glass-card {
             background: var(--glass-white);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #fff;
-            color: #004e92;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 800;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #00F2FE;
-            color: #fff;
-            box-shadow: 0 0 20px #00F2FE;
-        }
-
-        footer {
+            backdrop-filter: blur(12px);
+            padding: 3rem;
+            border-radius: 24px;
             text-align: center;
-            padding: 50px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            z-index: 2;
+        }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--ocean-deep); margin-bottom: 1rem; }
+        .hero-sub { font-size: 1.2rem; color: var(--ocean-teal); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- KEY STATS GRID --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stat-item { border-left: 2px solid var(--sunset-gold); padding-left: 1rem; text-align: left; }
+        .stat-val { font-family: 'Playfair Display', serif; font-size: 1.5rem; display: block; }
+        .stat-lab { font-size: 0.7rem; text-transform: uppercase; color: #888; }
+
+        /* --- CONTENT SECTIONS --- */
+        section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
+        
+        /* Beach Gradient Background */
+        .gradient-section {
+            background: linear-gradient(135deg, #fdfaf5 0%, #e0f2f1 100%);
+            border-radius: 40px;
+            margin: 2rem;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--ocean-deep); margin-bottom: 2rem; }
+
+        /* --- GALLERY --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s;
+            cursor: pointer;
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- CONTACT BUTTON --- */
+        .contact-box {
+            background: var(--ocean-deep);
+            color: white;
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .wa-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .hero-glass-card { margin: 1rem; padding: 2rem; }
+            section { padding: 4rem 1.5rem; }
+            .gradient-section { margin: 1rem 0; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header data-aos="zoom-out" data-aos-duration="1500">
-        <h1>High Performance</h1>
-        <p class="subtitle">Bio-Analysis Coaching & Elite Strategy</p>
-        <a href="#about" class="btn">DISCOVER MORE</a>
-    </header>
-
-    <div class="container" id="about">
-        <div class="card" data-aos="fade-up">
-            <h2>The Science of Results</h2>
-            <p>We don't guess—we analyze. Our bio-analysis method pinpoints exactly where you can improve, giving you a roadmap to elite performance.</p>
-        </div>
-
-        <div class="card" data-aos="fade-right">
-            <h2>Premium Coaching</h2>
-            <p>1-on-1 sessions designed to scale your results. Whether it's business, sport, or life, we provide the tools to dominate your field.</p>
-        </div>
-
-        <div class="card" data-aos="fade-left">
-            <h2>Ready to Start?</h2>
-            <p>Join the 100+ clients already seeing massive shifts in their daily output and long-term goals.</p>
-            <a href="#" class="btn">BOOK A SESSION</a>
+    <div class="hero">
+        <div class="hero-glass-card">
+            <p class="hero-sub">Costa Rica Real Estate</p>
+            <h1>La Virgen de Pavones</h1>
+            <p>A turnkey slice of paradise, just 13 minutes from the world's longest left.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-val">2 Bed</span>
+                    <span class="stat-lab">1 Bathroom</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">1,000 m²</span>
+                    <span class="stat-lab">Flat Lot</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">$100k</span>
+                    <span class="stat-lab">Negotiable</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 Bio-Analysis Coaching. All rights reserved.
-    </footer>
+    <section class="reveal">
+        <div style="max-width: 700px;">
+            <h2>The Vibe</h2>
+            <p>This isn't just another lot. It's a move-in ready home with vaulted ceilings and a porch made for Costa Rican sunsets. Whether you're looking for a surf base or a quiet retirement spot, this property hits the sweet spot between "ready now" and "room to grow."</p>
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <div class="gradient-section reveal">
+        <section>
+            <h2>Property Details</h2>
+            <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+                <p><strong>Location:</strong> La Virgen de Pavones, Golfito</p>
+                <p><strong>Surf:</strong> 13 min drive to Pilón (8.2 km)</p>
+                <p><strong>Utilities:</strong> Water & Electricity installed</p>
+                <p><strong>Condition:</strong> Newly built, unfurnished</p>
+            </div>
+        </section>
+    </div>
+
+    <section class="reveal">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item"><img src="images/02-exterior-front.jpeg"></div>
+            <div class="gallery-item"><img src="images/03-exterior-porch.jpeg"></div>
+            <div class="gallery-item"><img src="images/05-living-area.jpeg"></div>
+            <div class="gallery-item"><img src="images/06-kitchen.jpeg"></div>
+            <div class="gallery-item"><img src="images/07-bedroom1.jpeg"></div>
+            <div class="gallery-item"><img src="images/11-yard.jpeg"></div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <div class="contact-box">
+            <h2 style="color: white;">Interested?</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.8;">Message the owner directly to schedule a viewing or discuss the price.</p>
+            <a href="https://wa.me/50684904218" class="wa-btn">Chat on WhatsApp</a>
+        </div>
+    </section>
+
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
+        // Smooth Reveal Animation on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Run once on load to show elements already in view
+        reveal();
     </script>
+
 </body>
 </html>
