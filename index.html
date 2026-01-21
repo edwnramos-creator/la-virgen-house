@@ -6,220 +6,211 @@
     <title>La Virgen de Pavones — House | 13 Min to Surf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --ocean-deep: #1e3a5f;
             --ocean-teal: #4a90b8;
             --sand-light: #fdfaf5;
-            --text-dark: #2a3a4a;
+            --glass: rgba(255, 255, 255, 0.2);
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--sand-light); 
-            color: var(--text-dark); 
-            line-height: 1.7;
+            color: #2a3a4a; 
+            overflow-x: hidden; 
+            line-height: 1.8;
         }
 
-        /* --- SCROLL REVEAL --- */
+        /* --- SCROLL ANIMATIONS --- */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
+            transform: translateY(50px);
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO & PARALLAX --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/03-exterior-porch.jpeg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 120%; /* Taller for parallax */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/03-exterior-porch.jpeg') center/cover no-repeat;
+            z-index: -1;
+            will-change: transform;
         }
 
         .hero-transparent-card {
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            background: transparent;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            max-width: 650px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 4rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 700px;
             color: white;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(8px);
+            z-index: 2;
         }
 
         .hero-badge {
             display: inline-block;
             border: 1px solid white;
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
         }
 
-        h1.location {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 0.5rem; }
 
-        .location-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-
-        /* --- HERO STATS --- */
+        /* --- STATS GRID --- */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .hero-card {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 1.25rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .hero-card-value { font-family: 'Playfair Display', serif; font-size: 1.3rem; display: block; }
-        .hero-card-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.8; font-weight: 600; }
-
-        .price-highlight {
-            background: white;
-            color: var(--ocean-deep);
-            grid-column: span 2;
-        }
-
-        /* --- CONTENT SECTIONS --- */
-        section { padding: 6rem 1.5rem; max-width: 800px; margin: 0 auto; }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #fdfaf5 0%, #e8f4f8 100%);
-        }
-
-        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--ocean-deep); margin-bottom: 1.5rem; }
-        p { margin-bottom: 1.2rem; }
-
-        /* --- QUICK FACTS GRID --- */
-        .quick-facts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
-        .fact-card {
-            background: white;
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 20px;
         }
-        .fact-card h4 { color: var(--ocean-teal); margin-bottom: 0.3rem; font-size: 0.9rem; }
+        .price-highlight { background: white; color: var(--ocean-deep); grid-column: span 2; }
+
+        /* --- SECTIONS --- */
+        section { padding: 10rem 2rem; max-width: 1000px; margin: 0 auto; position: relative; }
+        
+        .beach-gradient {
+            background: linear-gradient(180deg, var(--sand-light) 0%, #e0f2f1 100%);
+            border-radius: 60px;
+            margin: 2rem;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--ocean-deep); margin-bottom: 2rem; }
+
+        /* --- DRAWING ELEMENTS --- */
+        .drawing {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.15;
+            animation: drift 10s linear infinite;
+        }
+
+        /* --- QUICK FACTS --- */
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .fact-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--ocean-teal);
+        }
 
         /* --- GALLERY --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        .gallery img {
+            width: 100%; height: 400px; object-fit: cover; border-radius: 30px;
+            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .gallery-item img:hover { transform: scale(1.03); }
+        .gallery img:hover { transform: scale(1.05) rotate(1deg); }
 
-        /* --- CONTACT --- */
-        .contact-cta {
+        /* --- CONTACT - BRIGHT & VISIBLE --- */
+        .contact-section {
             background: var(--ocean-deep);
             color: white;
             text-align: center;
-            padding: 5rem 2rem;
-            border-radius: 30px;
-            margin: 2rem;
+            padding: 8rem 2rem;
+            border-radius: 50px 50px 0 0;
+            margin-top: 5rem;
         }
         .whatsapp-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
             background: #25D366;
             color: white;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
+            padding: 1.5rem 4rem;
+            border-radius: 100px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            font-size: 1.3rem;
+            margin-top: 3rem;
+            transition: all 0.3s;
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
         }
+        .whatsapp-btn:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(37, 211, 102, 0.5); }
+
+        /* --- KEYFRAMES --- */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes drift { from { transform: rotate(0deg) translateX(20px) rotate(0deg); } to { transform: rotate(360deg) translateX(20px) rotate(-360deg); } }
 
         @media (max-width: 600px) {
+            section { padding: 5rem 1rem; }
+            .beach-gradient { margin: 1rem 0; border-radius: 0; }
             .hero-transparent-card { padding: 2rem 1rem; }
-            h1.location { font-size: 2.2rem; }
-            section { padding: 4rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="hero">
+        <div class="hero-bg" id="heroBg"></div>
         <div class="hero-transparent-card">
             <div class="hero-badge">Move-In Ready</div>
-            <h1 class="location">La Virgen de Pavones</h1>
-            <p class="location-subtitle">Turnkey house, 13 min to Pilón</p>
+            <h1>La Virgen de Pavones</h1>
+            <p style="font-size: 1.4rem; opacity: 0.9;">Turnkey house, 13 min to Pilón</p>
 
             <div class="hero-stats">
-                <div class="hero-card">
-                    <span class="hero-card-value">2 Bed</span>
-                    <span class="hero-card-label">1 Bath</span>
-                </div>
-                <div class="hero-card">
-                    <span class="hero-card-value">1,000 m²</span>
-                    <span class="hero-card-label">~10,764 sq ft</span>
-                </div>
-                <div class="hero-card">
-                    <span class="hero-card-value">13 Min</span>
-                    <span class="hero-card-label">Drive to Surf</span>
-                </div>
-                <div class="hero-card price-highlight">
-                    <span class="hero-card-value">$100,000</span>
-                    <span class="hero-card-label">Negotiable</span>
-                </div>
+                <div class="hero-card"><h3>2 Bed</h3><p style="font-size: 0.7rem; text-transform: uppercase;">1 Bath</p></div>
+                <div class="hero-card"><h3>1,000 m²</h3><p style="font-size: 0.7rem; text-transform: uppercase;">~10,764 sq ft</p></div>
+                <div class="hero-card"><h3>13 Min</h3><p style="font-size: 0.7rem; text-transform: uppercase;">Drive to Surf</p></div>
+                <div class="hero-card price-highlight"><h3>$100,000</h3><p style="font-size: 0.7rem; text-transform: uppercase;">Negotiable</p></div>
             </div>
         </div>
     </div>
 
     <section class="reveal">
+        <svg class="drawing" style="top: 10%; right: 10%; width: 100px;" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5"/></svg>
         <h2>Why I Like This One</h2>
         <p>Unlike the lots I usually find, this one comes with a house already built. 2 bed, 1 bath, wrap-around porch, vaulted ceilings. All services installed. Just needs furnishing.</p>
         <p>Honestly, I'd still prefer to build custom — that's just me. But if you don't want to deal with construction and just want something ready to go, this is worth a look. Price is negotiable too.</p>
     </section>
 
-    <div class="gradient-bg">
+    <div class="beach-gradient">
         <section class="reveal">
             <h2>Property Details</h2>
-            <div class="quick-facts">
-                <div class="fact-card"><h4>Location</h4><p>La Virgen de Pavones, Golfito</p></div>
-                <div class="fact-card"><h4>House</h4><p>2 bedrooms, 1 bathroom</p></div>
-                <div class="fact-card"><h4>Distance to Pilón</h4><p>13 min drive / 8.2 km</p></div>
-                <div class="fact-card"><h4>Utilities</h4><p>All services installed</p></div>
-                <div class="fact-card"><h4>Condition</h4><p>Move-in ready, needs furnishing</p></div>
-                <div class="fact-card"><h4>Features</h4><p>Gated, porch, landscaped yard</p></div>
+            <div class="fact-grid">
+                <div class="fact-item"><h4>Location</h4><p>La Virgen de Pavones, Golfito</p></div>
+                <div class="fact-item"><h4>House</h4><p>2 bedrooms, 1 bathroom</p></div>
+                <div class="fact-item"><h4>Distance to Pilón</h4><p>13 min drive / 8.2 km</p></div>
+                <div class="fact-item"><h4>Utilities</h4><p>All services installed</p></div>
+                <div class="fact-item"><h4>Condition</h4><p>Move-in ready, needs furnishing</p></div>
+                <div class="fact-item"><h4>Features</h4><p>Gated, porch, landscaped yard</p></div>
             </div>
         </section>
     </div>
@@ -227,12 +218,12 @@
     <section class="reveal">
         <h2>Photos</h2>
         <div class="gallery">
-            <div class="gallery-item"><img src="images/02-exterior-front.jpeg"></div>
-            <div class="gallery-item"><img src="images/03-exterior-porch.jpeg"></div>
-            <div class="gallery-item"><img src="images/05-living-area.jpeg"></div>
-            <div class="gallery-item"><img src="images/06-kitchen.jpeg"></div>
-            <div class="gallery-item"><img src="images/07-bedroom1.jpeg"></div>
-            <div class="gallery-item"><img src="images/11-yard.jpeg"></div>
+            <img src="images/02-exterior-front.jpeg">
+            <img src="images/03-exterior-porch.jpeg">
+            <img src="images/05-living-area.jpeg">
+            <img src="images/06-kitchen.jpeg">
+            <img src="images/07-bedroom1.jpeg">
+            <img src="images/11-yard.jpeg">
         </div>
     </section>
 
@@ -242,24 +233,29 @@
         <p><strong>Price is negotiable</strong> — asking $100K but there may be room to talk. Worth discussing directly with the seller.</p>
     </section>
 
-    <div class="contact-cta reveal">
-        <h2>Contact Seller</h2>
-        <a href="https://wa.me/50684904218" class="whatsapp-btn" target="_blank">WhatsApp</a>
+    <div class="contact-section reveal">
+        <h2 style="color: white; font-size: 3.5rem;">Contact Seller</h2>
+        <p style="opacity: 0.8;">Ready to see it in person? Click below to chat.</p>
+        <a href="https://wa.me/50684904218" class="whatsapp-btn">
+            Connect via WhatsApp
+        </a>
     </div>
 
     <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            document.getElementById('heroBg').style.transform = `translateY(${scroll * 0.4}px)`;
+        });
     </script>
 </body>
 </html>
