@@ -134,7 +134,11 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(180deg, var(--white) 0%, var(--ice) 100%);
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.55) 0%, rgba(30, 58, 95, 0.7) 100%), 
+                        url('images/03-exterior-porch.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -153,7 +157,8 @@
 
         .hero-badge {
             display: inline-block;
-            background: var(--sky);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
             font-size: 0.7rem;
             font-weight: 600;
@@ -162,6 +167,7 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             animation: fadeIn 0.6s ease forwards;
             animation-delay: 0.2s;
             opacity: 0;
@@ -169,21 +175,23 @@
 
         .location {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 8vw, 4rem);
-            color: var(--navy);
-            line-height: 1.15;
+            font-size: clamp(2.5rem, 9vw, 4.5rem);
+            color: white;
+            line-height: 1.1;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 0.8s ease forwards;
             animation-delay: 0.3s;
             opacity: 0;
         }
 
         .location-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             margin-bottom: 2.5rem;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.6s ease forwards;
             animation-delay: 0.5s;
             opacity: 0;
@@ -198,12 +206,13 @@
         }
 
         .hero-card {
-            background: var(--white);
-            border: 1px solid rgba(30, 58, 95, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 1.25rem 1.5rem;
             min-width: 130px;
-            box-shadow: 0 4px 20px rgba(30, 58, 95, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
@@ -215,8 +224,8 @@
         .hero-card:nth-child(4) { animation-delay: 0.9s; }
 
         .hero-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 35px rgba(30, 58, 95, 0.12);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
         }
 
         .hero-card-icon {
@@ -244,12 +253,12 @@
         }
 
         .price-card {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-color: var(--navy);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--sky) 100%);
+            border: none;
         }
 
         .price-card .hero-card-icon {
-            color: var(--sky-light);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .price-card .hero-card-value {
@@ -257,7 +266,7 @@
         }
 
         .price-card .hero-card-label {
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .scroll-hint {
@@ -265,14 +274,13 @@
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--text-light);
-            opacity: 0.4;
+            color: rgba(255, 255, 255, 0.7);
             animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(6px); }
+            50% { transform: translateX(-50%) translateY(8px); }
         }
 
         /* Section Styles */
@@ -287,7 +295,19 @@
         }
 
         .section-wrapper.bg-ice {
-            background: var(--ice);
+            background: linear-gradient(180deg, var(--ice) 0%, var(--ice-dark) 100%);
+        }
+
+        .section-wrapper.bg-navy {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .section-wrapper.bg-navy h2 {
+            color: white;
+        }
+
+        .section-wrapper.bg-navy p {
+            color: rgba(255, 255, 255, 0.85);
         }
 
         h2 {
@@ -477,13 +497,13 @@
         /* Contact Section */
         .contact {
             text-align: center;
-            padding: 3.5rem 1.5rem;
-            background: var(--white);
-            border-top: 1px solid rgba(30, 58, 95, 0.08);
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--sky) 100%);
+            border-top: none;
         }
 
         .contact h2 {
-            color: var(--navy);
+            color: white;
             margin-bottom: 1.5rem;
         }
 
@@ -499,12 +519,12 @@
             font-weight: 600;
             font-size: 1.05rem;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.45);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
         .whatsapp-btn svg {
@@ -641,11 +661,6 @@
         </div>
     </section>
 
-    <!-- Hero Image -->
-    <div class="hero-image scroll-scale">
-        <img src="images/02-exterior-front.jpeg" alt="House exterior with yard" onclick="openLightbox(this)">
-    </div>
-
     <!-- Why This Property -->
     <div class="section-wrapper">
         <section class="scroll-fade-left">
@@ -735,6 +750,9 @@
         <h2>Photos</h2>
     </section>
     <div class="gallery stagger-children">
+        <div class="gallery-item">
+            <img src="images/02-exterior-front.jpeg" alt="House exterior from yard" onclick="openLightbox(this)">
+        </div>
         <div class="gallery-item">
             <img src="images/03-exterior-porch.jpeg" alt="House with wrap-around porch" onclick="openLightbox(this)">
         </div>
