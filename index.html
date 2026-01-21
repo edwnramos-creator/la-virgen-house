@@ -3,35 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Virgen de Pavones — Premium Surf House</title>
+    <title>La Virgen de Pavones — House | 13 Min to Surf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Beachy Vibes Palette */
-            --ocean-deep: #1a3c5e;
-            --ocean-teal: #4fb3ad;
+            --ocean-deep: #1e3a5f;
+            --ocean-teal: #4a90b8;
             --sand-light: #fdfaf5;
-            --glass-white: rgba(255, 255, 255, 0.85);
-            --sunset-gold: #e6b17e;
-            --text-dark: #2c3e50;
+            --text-dark: #2a3a4a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--sand-light); 
             color: var(--text-dark); 
-            line-height: 1.8;
-            overflow-x: hidden;
+            line-height: 1.7;
         }
 
-        /* --- SMOOTH SCROLL ANIMATIONS --- */
+        /* --- SCROLL REVEAL --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 1s ease-out;
         }
         .reveal.active {
             opacity: 1;
@@ -41,87 +38,125 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: url('images/03-exterior-porch.jpeg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/03-exterior-porch.jpeg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-        }
-
-        /* Subtle gradient at the bottom to transition into white */
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 30vh;
-            background: linear-gradient(to bottom, transparent, var(--sand-light));
-        }
-
-        .hero-glass-card {
-            background: var(--glass-white);
-            backdrop-filter: blur(12px);
-            padding: 3rem;
-            border-radius: 24px;
             text-align: center;
-            max-width: 600px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
-            z-index: 2;
+            padding: 1.5rem;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--ocean-deep); margin-bottom: 1rem; }
-        .hero-sub { font-size: 1.2rem; color: var(--ocean-teal); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .hero-transparent-card {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            max-width: 650px;
+            color: white;
+            backdrop-filter: blur(2px);
+        }
 
-        /* --- KEY STATS GRID --- */
-        .stats-grid {
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        h1.location {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .location-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* --- HERO STATS --- */
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .hero-card-value { font-family: 'Playfair Display', serif; font-size: 1.3rem; display: block; }
+        .hero-card-label { font-size: 0.65rem; text-transform: uppercase; opacity: 0.8; font-weight: 600; }
+
+        .price-highlight {
+            background: white;
+            color: var(--ocean-deep);
+            grid-column: span 2;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        section { padding: 6rem 1.5rem; max-width: 800px; margin: 0 auto; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #fdfaf5 0%, #e8f4f8 100%);
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--ocean-deep); margin-bottom: 1.5rem; }
+        p { margin-bottom: 1.2rem; }
+
+        /* --- QUICK FACTS GRID --- */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
-        .stat-item { border-left: 2px solid var(--sunset-gold); padding-left: 1rem; text-align: left; }
-        .stat-val { font-family: 'Playfair Display', serif; font-size: 1.5rem; display: block; }
-        .stat-lab { font-size: 0.7rem; text-transform: uppercase; color: #888; }
-
-        /* --- CONTENT SECTIONS --- */
-        section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
-        
-        /* Beach Gradient Background */
-        .gradient-section {
-            background: linear-gradient(135deg, #fdfaf5 0%, #e0f2f1 100%);
-            border-radius: 40px;
-            margin: 2rem;
+        .fact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--ocean-deep); margin-bottom: 2rem; }
+        .fact-card h4 { color: var(--ocean-teal); margin-bottom: 0.3rem; font-size: 0.9rem; }
 
         /* --- GALLERY --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
         }
-        .gallery-item {
-            height: 350px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.4s;
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
-        .gallery-item:hover { transform: scale(1.02); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item img:hover { transform: scale(1.03); }
 
-        /* --- CONTACT BUTTON --- */
-        .contact-box {
+        /* --- CONTACT --- */
+        .contact-cta {
             background: var(--ocean-deep);
             color: white;
-            padding: 4rem;
-            border-radius: 30px;
             text-align: center;
-            margin-top: 4rem;
+            padding: 5rem 2rem;
+            border-radius: 30px;
+            margin: 2rem;
         }
-        .wa-btn {
+        .whatsapp-btn {
             display: inline-block;
             background: #25D366;
             color: white;
@@ -129,67 +164,68 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
 
-        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .hero-glass-card { margin: 1rem; padding: 2rem; }
+            .hero-transparent-card { padding: 2rem 1rem; }
+            h1.location { font-size: 2.2rem; }
             section { padding: 4rem 1.5rem; }
-            .gradient-section { margin: 1rem 0; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="hero">
-        <div class="hero-glass-card">
-            <p class="hero-sub">Costa Rica Real Estate</p>
-            <h1>La Virgen de Pavones</h1>
-            <p>A turnkey slice of paradise, just 13 minutes from the world's longest left.</p>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-val">2 Bed</span>
-                    <span class="stat-lab">1 Bathroom</span>
+        <div class="hero-transparent-card">
+            <div class="hero-badge">Move-In Ready</div>
+            <h1 class="location">La Virgen de Pavones</h1>
+            <p class="location-subtitle">Turnkey house, 13 min to Pilón</p>
+
+            <div class="hero-stats">
+                <div class="hero-card">
+                    <span class="hero-card-value">2 Bed</span>
+                    <span class="hero-card-label">1 Bath</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-val">1,000 m²</span>
-                    <span class="stat-lab">Flat Lot</span>
+                <div class="hero-card">
+                    <span class="hero-card-value">1,000 m²</span>
+                    <span class="hero-card-label">~10,764 sq ft</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-val">$100k</span>
-                    <span class="stat-lab">Negotiable</span>
+                <div class="hero-card">
+                    <span class="hero-card-value">13 Min</span>
+                    <span class="hero-card-label">Drive to Surf</span>
+                </div>
+                <div class="hero-card price-highlight">
+                    <span class="hero-card-value">$100,000</span>
+                    <span class="hero-card-label">Negotiable</span>
                 </div>
             </div>
         </div>
     </div>
 
     <section class="reveal">
-        <div style="max-width: 700px;">
-            <h2>The Vibe</h2>
-            <p>This isn't just another lot. It's a move-in ready home with vaulted ceilings and a porch made for Costa Rican sunsets. Whether you're looking for a surf base or a quiet retirement spot, this property hits the sweet spot between "ready now" and "room to grow."</p>
-        </div>
+        <h2>Why I Like This One</h2>
+        <p>Unlike the lots I usually find, this one comes with a house already built. 2 bed, 1 bath, wrap-around porch, vaulted ceilings. All services installed. Just needs furnishing.</p>
+        <p>Honestly, I'd still prefer to build custom — that's just me. But if you don't want to deal with construction and just want something ready to go, this is worth a look. Price is negotiable too.</p>
     </section>
 
-    <div class="gradient-section reveal">
-        <section>
+    <div class="gradient-bg">
+        <section class="reveal">
             <h2>Property Details</h2>
-            <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
-                <p><strong>Location:</strong> La Virgen de Pavones, Golfito</p>
-                <p><strong>Surf:</strong> 13 min drive to Pilón (8.2 km)</p>
-                <p><strong>Utilities:</strong> Water & Electricity installed</p>
-                <p><strong>Condition:</strong> Newly built, unfurnished</p>
+            <div class="quick-facts">
+                <div class="fact-card"><h4>Location</h4><p>La Virgen de Pavones, Golfito</p></div>
+                <div class="fact-card"><h4>House</h4><p>2 bedrooms, 1 bathroom</p></div>
+                <div class="fact-card"><h4>Distance to Pilón</h4><p>13 min drive / 8.2 km</p></div>
+                <div class="fact-card"><h4>Utilities</h4><p>All services installed</p></div>
+                <div class="fact-card"><h4>Condition</h4><p>Move-in ready, needs furnishing</p></div>
+                <div class="fact-card"><h4>Features</h4><p>Gated, porch, landscaped yard</p></div>
             </div>
         </section>
     </div>
 
     <section class="reveal">
-        <h2>Gallery</h2>
+        <h2>Photos</h2>
         <div class="gallery">
             <div class="gallery-item"><img src="images/02-exterior-front.jpeg"></div>
             <div class="gallery-item"><img src="images/03-exterior-porch.jpeg"></div>
@@ -201,30 +237,29 @@
     </section>
 
     <section class="reveal">
-        <div class="contact-box">
-            <h2 style="color: white;">Interested?</h2>
-            <p style="margin-bottom: 2rem; opacity: 0.8;">Message the owner directly to schedule a viewing or discuss the price.</p>
-            <a href="https://wa.me/50684904218" class="wa-btn">Chat on WhatsApp</a>
-        </div>
+        <h2>Things to Consider</h2>
+        <p><strong>Not walking distance to surf</strong> — you'll need a car or moto to get to Pilón. It's a 13-minute drive.</p>
+        <p><strong>Price is negotiable</strong> — asking $100K but there may be room to talk. Worth discussing directly with the seller.</p>
     </section>
 
+    <div class="contact-cta reveal">
+        <h2>Contact Seller</h2>
+        <a href="https://wa.me/50684904218" class="whatsapp-btn" target="_blank">WhatsApp</a>
+    </div>
+
     <script>
-        // Smooth Reveal Animation on Scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
-        // Run once on load to show elements already in view
         reveal();
     </script>
-
 </body>
 </html>
